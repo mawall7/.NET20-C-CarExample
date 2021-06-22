@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ConsoleApp3
 {
-    class Vehicle
+    public class Vehicle
     {
         public string RegNo { get; set; }
 
@@ -20,12 +21,28 @@ namespace ConsoleApp3
         }*/
     }
     
-    class fuelVehicle: Vehicle
+    public class fuelVehicle: Vehicle
     {
-        fuelVehicle(string regNo):base(regNo)   
-        {
-
+        public double FuelCapacity { get; }
+        
+        private double fuelLevel;
+        //[Range(0,1000)]
+        public double FuelLevel { 
+            get
+            {
+                return fuelLevel;
+            }
+            set 
+            {
+                double newLevel = Math.Max(0, value); // för att undvika negativa ett negativt värde! eller använd Dataannotations
+                fuelLevel = Math.Min(newLevel, FuelCapacity);
+            }
         }
+        fuelVehicle(string regNo, double fuelCapacity):base(regNo)   
+        {
+            FuelCapacity = fuelCapacity;
+        }
+
     }
 
 }

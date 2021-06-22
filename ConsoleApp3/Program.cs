@@ -7,7 +7,7 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             Class2 class2 = new Class2();
-             Vehicle v1 = new Vehicle();
+            var fuelVehicle = new fuelVehicle("ABC12A", 20);
             
             
         }
