@@ -38,10 +38,21 @@ namespace ConsoleApp3
                 fuelLevel = Math.Min(newLevel, FuelCapacity);
             }
         }
-        fuelVehicle(string regNo, double fuelCapacity):base(regNo)   
+        fuelVehicle(string regNo, double fuelCapacity) : base(regNo)
         {
             FuelCapacity = fuelCapacity;
         }
+
+        //överladdad konstruktor this går till ctor2
+        //fuelVehicle(string regNo, double fuelCapacity):this(regNo)   
+        //{
+        //    FuelCapacity = fuelCapacity;
+        //}
+        ////ctor2
+        //fuelVehicle(string regNo) : base(regNo)
+        //{
+
+        //}
 
     }
 
