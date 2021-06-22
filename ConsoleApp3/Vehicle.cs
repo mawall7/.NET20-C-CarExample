@@ -8,8 +8,8 @@ namespace ConsoleApp3
     {
         public string RegNo { get; set; }
 
-        public Vehicle()
-        { }
+        //public Vehicle()
+        //{ }
         public Vehicle(string regNo)
         {
             this.RegNo = RegNo;
@@ -22,7 +22,10 @@ namespace ConsoleApp3
     
     class fuelVehicle: Vehicle
     {
+        fuelVehicle(string regNo):base(regNo)   
+        {
 
+        }
     }
 
 }
