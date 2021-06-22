@@ -58,8 +58,8 @@ namespace ConsoleApp3
     }
     class fuelCar : fuelVehicle
     {
-        private const double fuelConsuption = 0.5;
-        public double maxdistance => FuelLevel / fuelConsuption;
+        private const double fuelConsumption = 0.5;
+        public double maxdistance => FuelLevel / fuelConsumption;
         public double Milage { get; private set; }
         public fuelCar(string regNo, double fuelCapacity) : base(regNo, fuelCapacity)
         {
@@ -68,7 +68,18 @@ namespace ConsoleApp3
 
         public override string Drive(double distance)
         {
-            return base.Drive(distance);
+            var result = new StringBuilder();
+            result.AppendLine(base.Drive(distance));
+
+            if (distance < 0)
+            {
+                distance = 0;
+                result.AppendLine("negative distance is assumed to be 0");
+            }
+
+            FuelLevel -= distance * fuelConsumption;
+            result.AppendLine($"regNo{RegNo} drove{distance}km");
+            return result.ToString();
         }
     }
 
