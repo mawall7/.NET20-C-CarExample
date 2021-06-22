@@ -5,9 +5,13 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    abstract class AbstractVehicle
+    public interface IDrive
     {
-        public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax 
+        public string Drive(double distance);
+    }
+    abstract class AbstractVehicle: IDrive
+    {
+        public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax  
         public abstract string Turn();
     }
     class Vehicle: AbstractVehicle
@@ -31,7 +35,7 @@ namespace ConsoleApp3
         }*/
     }
     
-     class Bicycle:AbstractVehicle 
+     class Bicycle:AbstractVehicle // måste implementra den abstrakta klassens metoder
     {
         public string Framenumber { get; set; }
         public Bicycle(string framenumber)
@@ -40,7 +44,12 @@ namespace ConsoleApp3
         }
 
         public override string Turn() => "Bicycle turns";
-        
+
+        public override string Drive(double distance)
+        {
+            return "Bicyle starts pedaling";
+        }
+
     }
      class fuelVehicle: Vehicle
     {
