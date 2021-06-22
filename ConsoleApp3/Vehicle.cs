@@ -83,15 +83,15 @@ namespace ConsoleApp3
         //{
 
         //}
-        
+        public string Sound() => "Tut tut";
 
     }
-    class fuelCar : fuelVehicle
+    class FuelCar : fuelVehicle
     {
         private const double fuelConsumption = 0.5;
         public double maxdistance => FuelLevel / fuelConsumption;
         public double Milage { get; private set; }
-        public fuelCar(string regNo, double fuelCapacity) : base(regNo, fuelCapacity)
+        public FuelCar(string regNo, double fuelCapacity) : base(regNo, fuelCapacity)
         {
 
         }
