@@ -7,6 +7,11 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
+            //IUI ui = new ConsoleUI(); // ex 1 interface användning skapa oberoende mellan implementation och definition av metoderna. print kan då skiljas åt och koden kan ändras kan t.ex. t.ex. från att skriva ut i konsolen till att skriva ut till en fil. 
+            //ui.Print("Hej"); 
+
+            var demo = new Demo(new ConsoleUI()); //ex 2 interface 
+
             Class2 class2 = new Class2();
             var fuelVehicle = new fuelVehicle("ABC12A", 20);
 
