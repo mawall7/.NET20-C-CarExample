@@ -38,7 +38,7 @@ namespace ConsoleApp3
                 fuelLevel = Math.Min(newLevel, FuelCapacity);
             }
         }
-        fuelVehicle(string regNo, double fuelCapacity) : base(regNo)
+        public fuelVehicle(string regNo, double fuelCapacity) : base(regNo)
         {
             FuelCapacity = fuelCapacity;
         }
@@ -53,7 +53,23 @@ namespace ConsoleApp3
         //{
 
         //}
+        
 
+    }
+    class fuelCar : fuelVehicle
+    {
+        private const double fuelConsuption = 0.5;
+        public double maxdistance => FuelLevel / fuelConsuption;
+        public double Milage { get; private set; }
+        public fuelCar(string regNo, double fuelCapacity) : base(regNo, fuelCapacity)
+        {
+
+        }
+
+        public override string Drive(double distance)
+        {
+            return base.Drive(distance);
+        }
     }
 
 }
