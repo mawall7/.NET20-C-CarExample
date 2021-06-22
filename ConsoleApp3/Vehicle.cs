@@ -12,8 +12,8 @@ namespace ConsoleApp3
     abstract class AbstractVehicle: IDrive
     {
         public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax  
-        public abstract string Turn();
-    }
+        public abstract string Turn(); // can have both undefined and defined memebers, must be defined on implementation
+    }   
     class Vehicle: AbstractVehicle
     {
         public string RegNo { get; set; }
