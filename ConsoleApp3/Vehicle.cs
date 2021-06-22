@@ -5,7 +5,12 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    public class Vehicle
+    abstract class AbstractVehicle
+    {
+        public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax 
+        public abstract string Turn();
+    }
+    class Vehicle: AbstractVehicle
     {
         public string RegNo { get; set; }
 
@@ -15,13 +20,29 @@ namespace ConsoleApp3
         {
             this.RegNo = RegNo;
         }
-        public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax 
+
+        public override string Turn()
+        {
+            return "Vehicle turns";
+        }
+        //public virtual string Drive(double distance) => distance > 0 ? $"Vehicle wants to drive for {distance}" : "Error"; // expression body syntax 
         /*{
            block syntax
         }*/
     }
     
-    public class fuelVehicle: Vehicle
+     class Bicycle:AbstractVehicle 
+    {
+        public string Framenumber { get; set; }
+        public Bicycle(string framenumber)
+        {
+            Framenumber = this.Framenumber;
+        }
+
+        public override string Turn() => "Bicycle turns";
+        
+    }
+     class fuelVehicle: Vehicle
     {
         public double FuelCapacity { get; }
         
@@ -69,7 +90,7 @@ namespace ConsoleApp3
         public override string Drive(double distance)
         {
             var result = new StringBuilder();
-            result.AppendLine(base.Drive(distance));
+            result.AppendLine(base.Drive(distance)); //kommer börja bygga strängen från basklassens Drive metod dvs. Vehicle wants to drive for distance
 
             if (distance < 0)
             {
@@ -78,7 +99,7 @@ namespace ConsoleApp3
             }
 
             FuelLevel -= distance * fuelConsumption;
-            result.AppendLine($"regNo{RegNo} drove{distance}km");
+            result.AppendLine($"regNo{RegNo} drove{distance}km");//+ ny implementation
             return result.ToString();
         }
     }
